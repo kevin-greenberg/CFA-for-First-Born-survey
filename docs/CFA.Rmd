@@ -41,14 +41,14 @@ knitr::kable(bp) %>%
   kable_styling(full_width = F)
 
 ```
-*Note*: Var1 = Birth position; Freq = How many respondents reported the respective birth position.
+
 ```{r cleaning, include=FALSE}
 #Data cleaning####
-#Delete responses of birth order 0, the codebook does not explain this. In addition, the survey was designed for families with 1 to 4 children. So for CFA purposes we will follow these parameters. 
+#Delete responses of birth order 0, the code book does not explain this. In addition, the survey was designed for families with 1 to 4 children. So for CFA purposes we will follow these parameters. 
 fb <- fb[fb$birthpos != 0, ]
 fb <- fb[!fb$birthpos >= 5, ]
 
-#Recategorize first born from non-first born
+#Re-categorize first born from non-first born
 fb$birthpos <- ifelse(fb$birthpos ==1, 1, 0)
 q <- table(fb$birthpos) #Still have 20,571 first born and 19,307 non-first born. So an even split in the data.
 summary(fb)#No missing data
