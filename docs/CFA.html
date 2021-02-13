@@ -1936,65 +1936,6 @@ library(kableExtra)
 #Load data
 fb &lt;- read.delim(&quot;C:/Users/kevin/Desktop/Portfolio/CFA-for-First-Born-survey/docs/FBPS-ValidationData.csv&quot;)</code></pre>
 <p>In the below table we see that 20,571 of the respondents were the first born child. The range in birth position is from 0th to 11th born. However, the survey was designed for determining birth position in families with 1 to 4 children. That being we must reduce the data set to only include families with 1 to 4 children. Lastly, all respondents who reported being the 0th born are also removed from the data set.</p>
-<pre class="r"><code>knitr:: kable(table(fb$birthpos), booktabs = TRUE, format = &quot;markdown&quot;) </code></pre>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Var1</th>
-<th align="right">Freq</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">0</td>
-<td align="right">277</td>
-</tr>
-<tr class="even">
-<td align="left">1</td>
-<td align="right">20571</td>
-</tr>
-<tr class="odd">
-<td align="left">2</td>
-<td align="right">12260</td>
-</tr>
-<tr class="even">
-<td align="left">3</td>
-<td align="right">5232</td>
-</tr>
-<tr class="odd">
-<td align="left">4</td>
-<td align="right">1815</td>
-</tr>
-<tr class="even">
-<td align="left">5</td>
-<td align="right">715</td>
-</tr>
-<tr class="odd">
-<td align="left">6</td>
-<td align="right">302</td>
-</tr>
-<tr class="even">
-<td align="left">7</td>
-<td align="right">170</td>
-</tr>
-<tr class="odd">
-<td align="left">8</td>
-<td align="right">89</td>
-</tr>
-<tr class="even">
-<td align="left">9</td>
-<td align="right">49</td>
-</tr>
-<tr class="odd">
-<td align="left">10</td>
-<td align="right">35</td>
-</tr>
-<tr class="even">
-<td align="left">11</td>
-<td align="right">326</td>
-</tr>
-</tbody>
-</table>
 <pre class="r"><code>bp &lt;- fb %&gt;% group_by(birthpos) %&gt;% summarise(count_bp = n())%&gt;%
   rename(c(`Birth Position` = birthpos, `Frequency` = count_bp))</code></pre>
 <pre><code>`summarise()` ungrouping output (override with `.groups` argument)</code></pre>
@@ -2110,7 +2051,6 @@ Frequency
 </tr>
 </tbody>
 </table>
-<p><em>Note</em>: Var1 = Birth position; Freq = How many respondents reported the respective birth position.</p>
 <p>With the data set cleaned there are still 20571 first born respondents and now 19307 non-first born respondents (people born as the 2nd through 4th child). This reduces the data set to 39878 and there is an approximately even number of respondents by birth position, based on a binary scale (0 = non-first born; 1 = first born). There are also no missing data in the data set (a rarity in typical data but this data has already been cleaned prior to being made available online).</p>
 <div id="plot" class="section level2">
 <h2>Plot</h2>
